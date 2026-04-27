@@ -31,15 +31,12 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: 3.8
+          python-version: 3.12
 
       - name: Clone source code
         run: |
-          GMEEK_VERSION=$(jq -r ".GMEEK_VERSION" config.json)
-          git clone https://github.com/MurthiNext/NextBlog /opt/Gmeek;
-          cd /opt/Gmeek/
-          lastTag=$(git describe --tags `git rev-list --tags --max-count=1`)
-          if [ $GMEEK_VERSION == 'last' ]; then git checkout $lastTag; else git checkout $GMEEK_VERSION; fi;
+          BRANCH=$(jq -r ".GMEEK_BRANCH // \"beta-dev\"" config.json)
+          git clone --branch $BRANCH https://github.com/MurthiNext/NextBlog.git /opt/Gmeek;
 
       - name: Install dependencies
         run: |
