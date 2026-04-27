@@ -8,5 +8,5 @@
     "UTC":8,
     "urlMode":"issue",
     "needComment":1,
-    "script":"<script async src='//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js'></script>"
+    "allHead":"<script async src='//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js'></script>"
 }
