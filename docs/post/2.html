@@ -22,26 +22,165 @@
 
 </head>
 <style>
-body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
-#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
-#footer {margin-top:64px; text-align: center;font-size: small;}
+:root {
+    --bg-page: #faf9f7;
+    --bg-card: #ffffff;
+    --border-card: #e5e0d8;
+    --border-light: #f0ece6;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.10);
+    --text-primary: #1f2937;
+    --text-secondary: #8b8680;
+    --radius-sm: 8px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+}
 
+[data-color-mode="dark"] {
+    --bg-page: #0d1117;
+    --bg-card: #161b22;
+    --border-card: #30363d;
+    --border-light: #21262d;
+    --text-primary: #c9d1d9;
+    --text-secondary: #8b949e;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+    --shadow-md: 0 1px 3px rgba(0,0,0,0.3);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 45px;
+    font-size: 16px;
+    font-family: sans-serif;
+    line-height: 1.25;
+    background: var(--bg-page);
+    transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+#header {
+    display: flex;
+    padding: 14px 20px;
+    margin-bottom: 16px;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+#header:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-1px);
+}
+
+#footer {
+    margin-top: 64px;
+    text-align: center;
+    font-size: small;
+    color: var(--text-secondary);
+}
+
+#footer a {
+    color: inherit;
+}
 </style>
 
 <style>
-.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
-.title-right{display:flex;margin:auto 0 0 auto;}
-.title-right .circle{padding: 14px 16px;margin-right:8px;}
-#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
-#postBody hr{height:2px;}
-#cmButton{height:48px;margin-top:48px;}
-#comments{margin-top:64px;}
-.g-emoji{font-size:24px;}
-@media (max-width: 600px) {
-    body {padding: 8px;}
-    .postTitle{font-size:24px;}
+.postTitle {
+    margin: auto 0;
+    font-size: 40px;
+    font-weight: bold;
+    color: var(--text-primary);
+}
+.title-right {
+    display: flex;
+    margin: auto 0 0 auto;
+    gap: 8px;
+    align-items: center;
+}
+.title-right .circle {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 1px solid var(--border-card);
+    border-radius: 50%;
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
 }
 
+#postBody {
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 36px;
+}
+#postBody hr {
+    height: 2px;
+}
+
+#cmButton {
+    height: 48px;
+    margin-top: 48px;
+    border-radius: 24px;
+    border: 1px solid var(--border-card);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+}
+
+#comments {
+    margin-top: 64px;
+}
+
+.g-emoji {
+    font-size: 24px;
+}
+
+
+
+@media (max-width: 600px) {
+    body { padding: 12px; }
+    .postTitle { font-size: 24px; }
+    .title-right .circle { width: 34px; height: 34px; }
+}
+
+@media (hover: hover) {
+    .title-right .circle:hover {
+        border-color: #c5bfb6;
+        box-shadow: var(--shadow-md);
+        transform: scale(1.08);
+        color: var(--text-primary);
+    }
+    [data-color-mode="dark"] .title-right .circle:hover {
+        border-color: #484f58;
+    }
+    #cmButton:hover {
+        border-color: #c5bfb6;
+        box-shadow: var(--shadow-md);
+        transform: translateY(-1px);
+    }
+}
+
+@media (hover: none) {
+    .title-right .circle:active {
+        transform: scale(0.95);
+        background: var(--border-light);
+    }
+    #cmButton:active {
+        transform: scale(0.98);
+        background: var(--border-light);
+    }
+}
 </style>
 
 
