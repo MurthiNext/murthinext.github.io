@@ -48,13 +48,20 @@ body {
     box-sizing: border-box;
     min-width: 200px;
     max-width: 900px;
-    margin: 20px auto;
+    min-height: 100vh;
+    margin: 0 auto;
     padding: 45px;
     font-size: 16px;
     font-family: sans-serif;
     line-height: 1.25;
     background: var(--bg-page);
     transition: background-color var(--transition-normal), color var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+}
+
+#content {
+    flex: 1;
 }
 
 #header {
@@ -73,7 +80,8 @@ body {
 }
 
 #footer {
-    margin-top: 64px;
+    margin-top: 0;
+    padding-top: 32px;
     text-align: center;
     font-size: small;
     color: var(--text-secondary);
@@ -170,12 +178,27 @@ body {
 }
 .listLabels {
     white-space: nowrap;
+    display: flex;
 }
 
 .lists .SideNav-item {
     border-bottom: 1px solid var(--border-light);
     padding: 14px 18px;
     transition: all var(--transition-fast);
+}
+
+.SideNav {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+.SideNav-item:first-child {
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+.SideNav-item:last-child {
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    border-bottom: none;
 }
 
 @media (max-width: 600px) {
@@ -185,12 +208,25 @@ body {
     .title-right .circle { width: 34px; height: 34px; }
     .SideNav { min-width: 0; }
     .lists .SideNav-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
         padding: 12px;
         margin-top: 4px;
         border-radius: var(--radius-sm);
         background: var(--bg-card);
         box-shadow: var(--shadow-sm);
         border-bottom: none;
+    }
+    .listTitle {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+    }
+    .listLabels {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 4px;
     }
     .subnav-search { width: auto; }
     .subnav-search-input { width: 120px; height: 34px; }
@@ -260,6 +296,7 @@ body {
 </div>
     <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://murthinext.github.io">MurthiNext</a></div>
 <div id="footer2">
+    <span id="busuanzi_container_site_pv" style="display:inline">总浏览量 <span id="busuanzi_value_site_pv"></span> 次 • </span>
     <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
 </div>
 
@@ -328,7 +365,6 @@ request.onload=function(){
 
 function showList(labelsCount){
     let SideNav=document.getElementsByClassName("SideNav")[0];
-    SideNav.classList.add("border");
     let taglabel=document.getElementById("taglabel");
 
     jsonData['labelColorDict']["All"]="#000";
