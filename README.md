@@ -1,6 +1,6 @@
-# Blog Title :link: https://MurthiNext.github.io/NEXTBlog 
-### :page_facing_up: [1](https://MurthiNext.github.io/NEXTBlog/tag.html) 
+# Blog Title :link: https://murthinext.github.io 
+### :page_facing_up: [1](https://murthinext.github.io/tag.html) 
 ### :speech_balloon: 0 
 ### :hibiscus: 2 
-### :alarm_clock: 2026-04-27 14:14:40 
+### :alarm_clock: 2026-04-27 14:34:51 
 ### Powered by :heart: [Gmeek](https://github.com/Meekdai/Gmeek)
