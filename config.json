@@ -7,6 +7,5 @@
     "i18n":"CN",
     "UTC":8,
     "urlMode":"issue",
-    "needComment":1,
-    "allHead":"<script async src='//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js'></script>"
+    "needComment":1
 }
