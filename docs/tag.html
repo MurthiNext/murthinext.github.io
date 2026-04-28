@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
     
-    <link rel="icon" href="https://blog.murthinext.xyz/avatar.png"><script>
+    <link rel="icon" href="https://blog.murthinext.xyz/avatar.png">
+    <link rel="preload" href="https://murthinext.github.io/fonts/SourceHanSansSC-Normal.woff2" as="font" type="font/woff2" crossorigin><script>
         let theme = localStorage.getItem("meek_theme") || "light";
         let resolvedTheme = theme === "auto"
             ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light")
@@ -21,7 +22,8 @@
 <style>
 @font-face {
     font-family: 'Source Han Sans SC';
-    src: url('https://murthinext.github.io/fonts/SourceHanSansSC-Normal.otf') format('opentype');
+    src: url('https://murthinext.github.io/fonts/SourceHanSansSC-Normal.woff2') format('woff2'),
+         url('https://murthinext.github.io/fonts/SourceHanSansSC-Normal.otf') format('opentype');
     font-display: swap;
     font-weight: normal;
     font-style: normal;
@@ -247,6 +249,7 @@ body {
     .lists .SideNav-item {
         flex-direction: column;
         align-items: flex-start;
+        justify-content: flex-start;
         gap: 6px;
         padding: 12px;
         margin-top: 4px;
@@ -257,6 +260,9 @@ body {
         box-shadow: 0 2px 12px rgba(0,0,0,0.06);
         border-bottom: none;
     }
+    .lists .SideNav-item > .d-flex {
+        width: 100%;
+    }
     [data-color-mode="dark"] .lists .SideNav-item {
         background: rgba(22,27,34,0.4);
         box-shadow: 0 2px 12px rgba(0,0,0,0.2);
@@ -265,6 +271,7 @@ body {
         white-space: normal;
         overflow: visible;
         text-overflow: clip;
+        text-align: left;
     }
     .listLabels {
         width: 100%;
