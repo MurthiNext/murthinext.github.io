@@ -7,7 +7,9 @@
     <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
     
     <link rel="icon" href="https://blog.murthinext.xyz/avatar.png">
-    <link rel="preload" href="https://murthinext.github.io/fonts/SourceHanSansSC-Normal.woff2" as="font" type="font/woff2" crossorigin><script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&display=swap" rel="stylesheet"><script>
         let theme = localStorage.getItem("meek_theme") || "light";
         let resolvedTheme = theme === "auto"
             ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light")
@@ -25,15 +27,6 @@
 
 </head>
 <style>
-@font-face {
-    font-family: 'Source Han Sans SC';
-    src: url("https://murthinext.github.io/fonts/SourceHanSansSC-Normal.woff2") format('woff2'),
-         url("https://murthinext.github.io/fonts/SourceHanSansSC-Normal.otf") format('opentype');
-    font-display: swap;
-    font-weight: normal;
-    font-style: normal;
-}
-
 :root {
     --bg-page: #faf9f7;
     --bg-gradient-page: linear-gradient(135deg, #f5f7e8, #fefdf9 30%, #f2f6e8 70%, #fefdf9);
@@ -80,7 +73,7 @@ body {
     margin: 0 auto;
     padding: 45px;
     font-size: 16px;
-    font-family: 'Source Han Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
     line-height: 1.25;
     transition: color var(--transition-normal);
     display: flex;
