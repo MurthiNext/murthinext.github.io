@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    
+    <link rel="icon" href="https://blog.murthinext.xyz/avatar.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&display=swap" rel="stylesheet"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        let resolvedTheme = theme === "auto"
+            ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light")
+            : theme;
+        document.documentElement.setAttribute("data-color-mode", resolvedTheme);
+        document.documentElement.setAttribute("data-user-theme", theme);
+    </script>
+<meta name="description" content="## STAGE0 前言
+你是如何看待“理想主义者”的？
+是觉得他们幼稚，天真，看不清现实。">
+<meta property="og:title" content="《来聊聊我的理想主义吧》 台本">
+<meta property="og:description" content="## STAGE0 前言
+你是如何看待“理想主义者”的？
+是觉得他们幼稚，天真，看不清现实。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://murthinext.github.io/post/4.html">
+<meta property="og:image" content="https://blog.murthinext.xyz/avatar.png">
+<title>《来聊聊我的理想主义吧》 台本</title>
+
+
+
+</head>
+<style>
+:root {
+    --bg-page: #faf9f7;
+    --bg-gradient-page: linear-gradient(135deg, #d8e8c0 0%, #f5efe0 40%, #cfe0b6 65%, #f5efe0 100%);
+    --bg-card: #ffffff;
+    --border-card: #e5e0d8;
+    --border-light: #f0ece6;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.10);
+    --text-primary: #1f2937;
+    --text-secondary: #8b8680;
+    --radius-sm: 8px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+}
+
+[data-color-mode="dark"] {
+    --bg-page: #0d1117;
+    --bg-gradient-page: linear-gradient(135deg, #1a1a2e, #16213e 50%, #0f3460);
+    --bg-card: #161b22;
+    --border-card: #30363d;
+    --border-light: #21262d;
+    --text-primary: #c9d1d9;
+    --text-secondary: #8b949e;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+    --shadow-md: 0 1px 3px rgba(0,0,0,0.3);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+html {
+    min-height: 100vh;
+    background: var(--bg-gradient-page);
+    background-attachment: fixed;
+    transition: background var(--transition-normal);
+}
+
+body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 900px;
+    min-height: calc(100vh - 60px);
+    margin: 20px auto 40px;
+    padding: 45px;
+    font-size: 16px;
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+    line-height: 1.25;
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(210,200,180,0.3);
+    border-radius: 20px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
+    transition: color var(--transition-normal), background var(--transition-normal), box-shadow var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+}
+
+[data-color-mode="dark"] body {
+    background: rgba(22,27,34,0.45);
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.35), 0 2px 8px rgba(0,0,0,0.25);
+}
+
+#content {
+    flex: 1;
+}
+
+#header {
+    display: flex;
+    padding: 14px 20px;
+    margin-bottom: 16px;
+    background: rgba(250,247,240,0.55);
+    border-radius: var(--radius-lg);
+    transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+[data-color-mode="dark"] #header {
+    background: rgba(255,255,255,0.04);
+}
+
+#header:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-1px);
+}
+
+#footer {
+    margin-top: 0;
+    padding-top: 32px;
+    text-align: center;
+    font-size: small;
+    color: var(--text-secondary);
+}
+
+#footer a {
+    color: inherit;
+}
+</style>
+
+<style>
+.postTitle {
+    margin: auto 0;
+    font-size: 40px;
+    font-weight: bold;
+    color: var(--text-primary);
+}
+.title-right {
+    display: flex;
+    margin: auto 0 0 auto;
+    gap: 8px;
+    align-items: center;
+}
+.title-right .circle {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 1px solid var(--border-card);
+    border-radius: 50%;
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+}
+
+#postBody {
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 36px;
+}
+#postBody hr {
+    height: 2px;
+}
+
+#cmButton {
+    height: 48px;
+    margin-top: 48px;
+    border-radius: 24px;
+    border: 1px solid var(--border-card);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+}
+
+#comments {
+    margin-top: 64px;
+}
+
+.g-emoji {
+    font-size: 24px;
+}
+
+
+
+@media (max-width: 600px) {
+    body { padding: 16px; margin: 12px auto 24px; border-radius: 14px; min-height: calc(100vh - 36px); }
+    .postTitle { font-size: 24px; }
+    .title-right .circle { width: 34px; height: 34px; }
+}
+
+@media (hover: hover) {
+    .title-right .circle:hover {
+        border-color: #c5bfb6;
+        box-shadow: var(--shadow-md);
+        transform: scale(1.08);
+        color: var(--text-primary);
+    }
+    [data-color-mode="dark"] .title-right .circle:hover {
+        border-color: #484f58;
+    }
+    #cmButton:hover {
+        border-color: #c5bfb6;
+        box-shadow: var(--shadow-md);
+        transform: translateY(-1px);
+    }
+}
+
+@media (hover: none) {
+    .title-right .circle:active {
+        transform: scale(0.95);
+        background: var(--border-light);
+    }
+    #cmButton:active {
+        transform: scale(0.98);
+        background: var(--border-light);
+    }
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">《来聊聊我的理想主义吧》 台本</h1>
+<div class="title-right">
+    <a href="https://murthinext.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/MurthiNext/murthinext.github.io/issues/4" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h2>STAGE0 前言</h2>
+<p>你是如何看待“理想主义者”的？<br>
+是觉得他们幼稚，天真，看不清现实。<br>
+还是觉得他们高尚，积极，有理想？<br>
+诚然，这个世界确实有相当多不美好的事情，让我们备受打击。<br>
+人情世故的黑暗，资源分配的不平等；学生与打工人背负着巨大的压力，战争也此起彼伏、从未停息。<br>
+我可以说出一百个我们不值得活下去的理由，但如果我们只能看见这些，那摆在我们面前的问题恐怕只有一个：我们为什么不去死呢？</p>
+<h2>STAGE1 理想主义</h2>
+<p>理想主义，又称“规范主义”或“思潮主义”，是基于信仰的精神追求，其核心强调人性本善。<br>
+最基本的，便是相信“世界本应美好”，并以此为信念，着手去推动社会发展。<br>
+我准备了几个近年来比较有争议性的问题：<br>
+你相信爱情吗？你愿意助人为乐吗？你愿意用温柔的眼光看待别人吗？</p>
+<p>这些道德问题，已经因现实逐渐转向了利益问题。</p>
+<p>宽泛地讲，现实主义者可能会作出更事实性的、倾向利益的回答。<br>
+不相信，因为可能会被骗彩礼，对方可能并不爱自己，甚至会出轨，并为自己带来经济压力。<br>
+不愿意，因为可能会被碰瓷，被法院指以巨额赔偿金，除了麻烦什么也带不来。<br>
+不愿意，因为人情世故是黑暗的，我无法相信他对我是心怀善意的。</p>
+<p>而理想主义者的回答，可能就像一个学生或者隐居修士，充满浪漫色彩。<br>
+相信，因为爱情是高尚的，真正的爱情不会受物质约束，这世界一定存在和我情投意合的人。<br>
+愿意，我帮助别人只是因为我想帮助，万一他真的有困难怎么办？不帮助我会有罪恶感。<br>
+愿意，我凭什么去怀疑每个人都是居心叵测的？我相信只要我温柔待他，他也会温柔待我。</p>
+<p>现实主义和理想主义二律背反，但他们都没有错，我们不必指责他们任何一方。<br>
+现实主义是通过综合考虑来保护自己，理想主义则更倾向于用温柔的方法去创造乌托邦。<br>
+之所以会有这两种主义，本质还是不同人为了应对社会，作出的不同决策。<br>
+然而世界对待理想主义并不温柔，大多数人会觉得，理想主义者只是为了欺骗自己，根本没有考虑现实意义上的“最优解”。<br>
+而大多理想主义者，他们的下场也往往并不好受，<del>遭受偏见，被排挤，屡屡受挫。</del><br>
+在这个未建成的乌托邦里，太多理想主义者为此献出鲜血，倒在了通往美好世界的路上。<br>
+某种意义上，理想主义者就是向死而生的。<br>
+他们会觉得，如果自己失去了理想主义的善良、勇敢、温柔，那么在精神意义上，自己就已经死掉了。<br>
+所以即便屡次失败，也总有人会坚守理想——要么成功，要么去死。</p>
+<h2>STAGE2 我失败的理想主义</h2>
+<p>MurthiNext当然是一位理想主义者，“世界本应美好，大家一起可爱”，这便是我理想的一角。<br>
+说实话，我甚至无法想象，如果我失去了理想，失去了我心中的那座乌托邦，我的人生将会怎样。<br>
+由于前文所述的各种原因，我在理想主义的道路上并不顺利。<br>
+我最早有那样的想法，大概是在初中二年级。<br>
+我就读在一所私立初中，班级里的老师都非常严格，尤其是我的语文老师。<br>
+体罚，叫家长，不间断的考试与排满日程表的课程，让我的初中生活苦不堪言。<br>
+我在小学度过的时光其实还算顺利，所以在初中受到的这些挫折，一次次打击了我的内心。<br>
+在此之前，从来没人这样打过我、骂过我。<br>
+大概是在初二那会，我第一次正式接触了二次元，读到了一本国漫《我家老婆来自一千年前》。<br>
+于是乎我开始思考，那种日常不就是我所憧憬的吗？至少不应充满打骂声，哭泣声。<br>
+这个开始其实并不严谨，因为我甚至没有读过任何一本哲学巨著，仅仅是在随便读过本漫画后就开始思考起：人活着是为了什么？<br>
+大概用了一年时间，我明白了，人活着就是为了创造那样的美好世界。<br>
+为了让所有人拥有那样的日常，为了让万家灯火照亮全球。<br>
+我的初二下半年与初三上半年过得相当糟糕，大概是因为那时我的心理并不成熟，现实的巨大压力和漫画小说里的美好形成的反差又太过巨大。<br>
+我一遍遍思考着人生的意义，历经过无数个痛苦的夜晚，一点点了解各种哲学知识，在开拓精神世界的道路上越走越远。<br>
+然而在初四，我大概是终于撑不住了——我为什么要一直活在语文老师的阴影之下？我为什么要天天提心吊胆的上课？<br>
+可能是因为我的玻璃心，可能是因为我的叛逆、青春期，也可能是因为我遗传的焦虑症，总之，我大概在那时候疯掉了。<br>
+我开始逃学，不去上学，一连数个星期的请假，和父母不断地争吵，最终在初四上学期结束后放弃了自己的学业。<br>
+我的成绩直线下滑，原本能考上全省最好高中的那个天才最后只考了一个末流省重点，直到现在高一下学期都还请假在家。</p>
+<p>一段新的人生开始了。<br>
+这段时间，我几乎把常见的精神疾病都患了个遍，家人天天带着我往精神科跑。<br>
+非常庆幸的是，我的家庭很幸福，我活了下来，然而仅仅是活了下来。<br>
+我开始尝试在网络上寻求救赎，不断修正自己的言行，尝试让这个精神病变得能融入众人之中。<br>
+结果依旧不幸，一次又一次地失败了。<br>
+我追求理想主义，其实就是为了寻求救赎，我希望能让自己变得更加温柔、善良，以此来感化他人，让他们和我做朋友。<br>
+但是精神病终究是精神病，他的想法一定是病态的。<br>
+尽管我不断尝试向别人示好，不输出负面情绪，甚至给别人付朋友费、买礼物，依然没交到什么长久的朋友。<br>
+至少在向他人示好的时候，我自己是会开心的。</p>
+<h2>STAGE2.5 复仇</h2>
+<p>我直到现在都在思考，如果自己活不下去了，要不要去复仇。<br>
+我的语文老师曾经讲过，她梦见了一位学生在课堂上用刀刺向她。<br>
+我不敢确定这是不是某种预言。</p>
+<h2>STAGE3 为理想而活</h2>
+<p>大概是因为各种心理疾病、精神疾病，我现在相当难以理解情感，心里的情绪总像乱麻一样缠在一起，说不清是什么感觉。<br>
+过了这么长时间，经历了这么多挫折，我依然怀揣对美好世界的向往、期盼，我觉得这是一件很值得自豪的事情吧？<br>
+我依然相信，世界本应美好，至少不应该像现在这样充满苦难。<br>
+我依然愿意用积极的眼光去看待事物，也希望我能永远保持这份“天真”，永远不要向现实低头，哪怕死在这条路上。<br>
+最近我也开始向联合国儿童基金会捐款了，这大概也会有用吧？<br>
+希望大家也能活成理想中的样子。使用善良的言行举止，待每个人都温柔一点。<br>
+不要让情绪主导自己的思想，理性的论证才更有意义，不要跟风去学别人做些什么，而是做自己认为有意义的。<br>
+之所以做这期视频，也是因为我在与别人交流观点的时候，或多或少会展露出一点“理想”的痕迹，从而被别人指认自己太过天真。<br>
+同时，在编写这期文案的时候，我也想起了自己不那么幸运的过往——我希望以此鼓励所有理想主义者的信仰，因为正有人与他们位于同一战线。<br>
+尽管世界待理想主义者并不温柔，我仍然相信，我们所有人都将推着世界向成为乌托邦前进。<br>
+这个世界需要理想主义者。</p></div>
+<div style="font-size:small;margin-top:8px;float:right;">
+    <span id="busuanzi_container_page_pv" style="display:inline">本文浏览量 <span id="busuanzi_value_page_pv"></span> 次</span>
+    
+</div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://murthinext.github.io">MurthiNext</a></div>
+<div id="footer2">
+    <span id="busuanzi_container_site_pv" style="display:none">总浏览量 <span id="busuanzi_value_site_pv"></span> 次 • </span>
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("04/27/2026"!=""){
+    var startSite=new Date("04/27/2026");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行 "+diffDay+" 天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    let resolved = mode === "auto"
+        ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light")
+        : mode;
+    document.documentElement.setAttribute("data-color-mode", resolved);
+    document.documentElement.setAttribute("data-user-theme", mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode = document.documentElement.getAttribute('data-user-theme') || localStorage.getItem("meek_theme") || "light";
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+    var userTheme = document.documentElement.getAttribute("data-user-theme")
+        || localStorage.getItem("meek_theme")
+        || "light";
+    if (userTheme === "auto") {
+        document.documentElement.setAttribute("data-color-mode", e.matches ? "dark" : "light");
+    }
+});
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+<script>
+(function(){var s=document.createElement('script');s.src='https://events.vercount.one/js';s.async=true;document.head.appendChild(s);})();
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.disabled=true;
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","MurthiNext/murthinext.github.io");
+    script.setAttribute("issue-term","title");
+    
+    var storedUtterTheme = localStorage.getItem("meek_theme") || "light";
+    var resolvedUtterTheme = storedUtterTheme === "auto"
+        ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light")
+        : storedUtterTheme;
+    if(resolvedUtterTheme == "dark") {script.setAttribute("theme","dark-blue");}
+    else {script.setAttribute("theme","github-light");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+
+
+</script>
+
+
+</html>
