@@ -35,7 +35,7 @@ jobs:
 
       - name: Clone source code
         run: |
-          BRANCH=$(jq -r ".GMEEK_BRANCH // \"beta-dev\"" config.json)
+          BRANCH=$(jq -r ".GMEEK_BRANCH // \"main\"" config.json)
           git clone --branch $BRANCH https://github.com/MurthiNext/NextBlog.git /opt/Gmeek;
 
       - name: Install dependencies
