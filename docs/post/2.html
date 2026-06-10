@@ -4,22 +4,12 @@
     <meta content="text/html; charset=utf-8" http-equiv="content-type" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="view-transition" content="same-origin">
     <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
     
     <link rel="icon" href="https://blog.murthinext.xyz/avatar.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&display=swap" rel="stylesheet">
-    <!-- 页面过渡降级：在渲染前检查是否需要进入动画 -->
-    <script>
-    (function(){
-        if (!document.startViewTransition && sessionStorage.getItem('navTransition') === 'true') {
-            sessionStorage.removeItem('navTransition');
-            document.documentElement.classList.add('page-entering');
-        }
-    })();
-    </script><script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&display=swap" rel="stylesheet"><script>
         let theme = localStorage.getItem("meek_theme") || "light";
         let resolvedTheme = theme === "auto"
             ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light")
@@ -136,42 +126,6 @@ body {
 
 #footer a {
     color: inherit;
-}
-
-/* ====== MPA View Transition 页面过渡动画 ====== */
-@view-transition {
-    navigation: auto;
-}
-
-/* 旧页面退出：全页快照淡出 */
-::view-transition-old(root) {
-    animation: vtFadeOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-/* 新页面进入：全页快照淡入 */
-::view-transition-new(root) {
-    animation: vtFadeIn 0.4s 0.15s cubic-bezier(0, 0, 0.2, 1) forwards;
-}
-
-@keyframes vtFadeOut {
-    to { opacity: 0; transform: scale(0.985); }
-}
-
-@keyframes vtFadeIn {
-    from { opacity: 0; transform: scale(1.01); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-/* JS 降级：进入动画的起始隐藏状态 */
-html.page-entering body {
-    opacity: 0;
-    transform: scale(1.01);
-}
-
-html.page-entering.ready body {
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    opacity: 1;
-    transform: scale(1);
 }
 </style>
 
@@ -377,63 +331,6 @@ console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 
 </script>
 <script>
 (function(){var s=document.createElement('script');s.src='https://events.vercount.one/js';s.async=true;document.head.appendChild(s);})();
-</script>
-<!-- 页面过渡降级：非 Chromium 浏览器的全局过渡逻辑 -->
-<script>
-(function() {
-    var supportsVT = document.startViewTransition != null;
-    var html = document.documentElement;
-
-    // 进入动画触发
-    if (html.classList.contains('page-entering')) {
-        requestAnimationFrame(function() {
-            requestAnimationFrame(function() {
-                html.classList.add('ready');
-                setTimeout(function() {
-                    html.classList.remove('page-entering', 'ready');
-                }, 450);
-            });
-        });
-    }
-
-    // View Transition API 可用时无需手动拦截
-    if (supportsVT) return;
-
-    // 全局内部链接拦截 —— 覆盖主页→文章、文章→主页、标签页等所有站内导航
-    document.addEventListener('click', function(e) {
-        var link = e.target.closest('a');
-        if (!link) return;
-
-        var href = link.getAttribute('href');
-        if (!href || href.startsWith('javascript:') || href === '#') return;
-
-        // 排除新窗口打开
-        if (link.getAttribute('target') === '_blank') return;
-
-        // 解析相对/绝对 URL
-        var linkURL;
-        try {
-            linkURL = new URL(href, window.location.href);
-        } catch (_) {
-            return; // 无效 URL 不做处理
-        }
-
-        // 仅拦截同源、不同路径的导航（保留同页锚点跳转）
-        if (linkURL.origin !== window.location.origin) return;
-        if (linkURL.pathname === window.location.pathname && linkURL.hash) return;
-        if (linkURL.pathname === window.location.pathname && !linkURL.hash) return;
-
-        // 执行淡出过渡
-        e.preventDefault();
-        sessionStorage.setItem('navTransition', 'true');
-        document.body.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-        document.body.style.opacity = '0';
-        document.body.style.transform = 'scale(0.985)';
-        setTimeout(function() {
-            window.location.href = href;
-        }, 320);
-    });
-})();
 </script>
 
 <script>
