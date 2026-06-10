@@ -4,12 +4,22 @@
     <meta content="text/html; charset=utf-8" http-equiv="content-type" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="view-transition" content="same-origin">
     <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
     
     <link rel="icon" href="https://blog.murthinext.xyz/avatar.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&display=swap" rel="stylesheet"><script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&display=swap" rel="stylesheet">
+    <!-- 页面过渡降级：在渲染前检查是否需要进入动画 -->
+    <script>
+    (function(){
+        if (!document.startViewTransition && sessionStorage.getItem('navTransition') === 'true') {
+            sessionStorage.removeItem('navTransition');
+            document.documentElement.classList.add('page-entering');
+        }
+    })();
+    </script><script>
         let theme = localStorage.getItem("meek_theme") || "light";
         let resolvedTheme = theme === "auto"
             ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light")
@@ -124,6 +134,52 @@ body {
 
 #footer a {
     color: inherit;
+}
+
+/* ====== MPA View Transition 页面过渡动画 ====== */
+@view-transition {
+    navigation: auto;
+}
+
+/* 旧页面退出动画 */
+::view-transition-old(root) {
+    animation: vtFadeOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* 新页面进入动画 */
+::view-transition-new(root) {
+    animation: vtFadeIn 0.4s 0.15s cubic-bezier(0, 0, 0.2, 1) forwards;
+}
+
+@keyframes vtFadeOut {
+    to { opacity: 0; transform: scale(0.985); }
+}
+
+@keyframes vtFadeIn {
+    from { opacity: 0; transform: scale(1.01); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Header 共享元素过渡 —— 使头像+博客名与文章标题平滑切换 */
+#header {
+    view-transition-name: site-header;
+}
+
+/* 内容区共享元素过渡 */
+#content {
+    view-transition-name: site-content;
+}
+
+/* JS 降级：进入动画的起始隐藏状态 */
+html.page-entering body {
+    opacity: 0;
+    transform: scale(1.01);
+}
+
+html.page-entering.ready body {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    opacity: 1;
+    transform: scale(1);
 }
 </style>
 
@@ -479,6 +535,23 @@ console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 
 <script>
 (function(){var s=document.createElement('script');s.src='https://events.vercount.one/js';s.async=true;document.head.appendChild(s);})();
 </script>
+<!-- 页面过渡降级：进入动画触发 -->
+<script>
+(function() {
+    var html = document.documentElement;
+    if (html.classList.contains('page-entering')) {
+        // 等待首帧渲染完成后触发淡入动画
+        requestAnimationFrame(function() {
+            requestAnimationFrame(function() {
+                html.classList.add('ready');
+                setTimeout(function() {
+                    html.classList.remove('page-entering', 'ready');
+                }, 450);
+            });
+        });
+    }
+})();
+</script>
 
 <script>
 document.getElementById("pathSearch").setAttribute("d",IconList["search"]);
@@ -497,6 +570,29 @@ for(var i=0;i<iconPost.length;i++){
 
 
 </script>
+<!-- 页面过渡降级：拦截博客列表点击，手动淡出后跳转 -->
+
+<script>
+(function() {
+    var supportsVT = document.startViewTransition != null;
+    if (supportsVT) return;
+
+    document.querySelectorAll('.SideNav-item').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            var href = this.getAttribute('href');
+            sessionStorage.setItem('navTransition', 'true');
+            document.body.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            document.body.style.opacity = '0';
+            document.body.style.transform = 'scale(0.985)';
+            setTimeout(function() {
+                window.location.href = href;
+            }, 320);
+        });
+    });
+})();
+</script>
+
 
 
 </html>
